@@ -3,6 +3,7 @@ package com.example.demo.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,8 +24,10 @@ public class GarbageController {
 	
 	
 	@RequestMapping(value="/garbage" , method=RequestMethod.GET)
+	@Scheduled(fixedRate = 6000)
     public List<Garbage> getAllGarbage()
     {
+		System.out.println("here");
     	List<Garbage> list =   garbageRepository.findAll();
     	return list ;
     }
